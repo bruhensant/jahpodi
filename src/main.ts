@@ -1,9 +1,31 @@
 import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+//make an api get request
+
+//add cors header to the response
+//https://timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo
+
+
+
+const url = 'https://timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo'
+
+fetch(url,
+	{
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': 'no-cors'
+		}
+	
+	}
+	).then(response => response.json()).then(data => {
+	console.warn(data)
+})
+
+/*
+document.querySelector<HTMLDivElement>('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
@@ -20,5 +42,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </p>
   </div>
 `
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+*/
