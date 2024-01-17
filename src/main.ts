@@ -1,28 +1,38 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
 
-//make an api get request
+const hora = new Date().getHours();
 
-//add cors header to the response
-//https://timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo
-
-
-
-const url = 'https://timeapi.io/api/Time/current/zone?timeZone=America/Sao_Paulo'
-
-fetch(url,
-	{
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': 'no-cors'
-		}
-	
+if (hora >= 12 && hora <= 14) {
+	const tudoElement = document.getElementById("tudo");
+	if (tudoElement) {
+		tudoElement.style.backgroundColor = "#00fa6c";
 	}
-	).then(response => response.json()).then(data => {
-	console.warn(data)
-})
+
+	const appElement = document.querySelector<HTMLDivElement>('#app');
+	if (appElement) {
+		appElement.innerHTML = `
+			<div>
+				<h1>Jah podi</h1>
+			</div>
+		`;
+	}
+} else if (hora >= 15 && hora <= 23) {
+	const tudoElement = document.getElementById("tudo");
+	if (tudoElement) {
+		tudoElement.style.backgroundColor = "#ec3830";
+	}
+
+	const appElement = document.querySelector<HTMLDivElement>('#app');
+	if (appElement) {
+		appElement.innerHTML = `
+			<div>
+				<h1>não podih maise</h1>
+			</div>
+		`;
+	}
+}
+
+
 
 /*
 document.querySelector<HTMLDivElement>('#app').innerHTML = `
